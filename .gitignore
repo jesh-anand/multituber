@@ -1,0 +1,19 @@
+*.py[oc]
+.idea
+__pycache__
+# Temp files
+*~
+~*
+.*~
+\#*
+.#*
+*#
+dist
+.DS_Store
+
+# Build files
+build
+dist
+pkg
+*.egg
+*.egg-info
