@@ -2,7 +2,7 @@ from pytube import YouTube
 import logger
 import os
 import winsound
-from progressbar import print_status
+from progress_bar import print_status
 
 """youtube-downloader.py: A Youtube video downloader that is able to download multiple videos from different
                             channels/playlists simultaneously
@@ -19,7 +19,7 @@ def main():
 
     _configfile = 'C:/Users/Prajesh/Swiss-Army-Scripts/Python/Tools/config/links.properties'
 
-    _path = 'videos/'
+    _path = 'downloads/'
 
     _format = 'mp4'
 
