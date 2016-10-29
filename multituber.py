@@ -12,6 +12,7 @@ __author__ = "Prajesh Ananthan"
 __copyright__ = "Copyright 2016, Python"
 __license__ = "GPL"
 
+
 # TODO: To have flexible approach to download videos at all resolution
 # TODO: To download multiple videos simultanously
 # TODO: Style GUI with proper positioning
@@ -29,7 +30,6 @@ def main():
     _quality = config.getvalue('QUALITY')
 
     _links = user_interface.getlinks()
-    print("Prajesh: {}".format(_links))
 
     createdirectory(_download_path)
 
@@ -37,7 +37,6 @@ def main():
 
     logger.INFO("Done. Videos downloaded: {}".format(len(_links)))
     logger.INFO("##### Shuting down Multituber #####")
-
 
 
 def createdirectory(directory):
