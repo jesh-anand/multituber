@@ -1,70 +1,61 @@
 from pytube import YouTube
+from ui import Gui
 import logger
 import os
 import winsound
+from readconfig import *
 from progress_bar import print_status
 
-"""youtube-downloader.py: A Youtube video downloader that is able to download multiple videos from different
-                            channels/playlists simultaneously
-"""
+"""youtube-downloader.py: A Youtube video downloader that downloads multiple videos from various sources simulatenously"""
+
 __author__ = "Prajesh Ananthan"
 __copyright__ = "Copyright 2016, Python"
 __license__ = "GPL"
 
-# TODO: Launch a simple GUI that able pick up URL entries and download videos accordingly
 # TODO: To have flexible approach to download videos at all resolution
 # TODO: To download multiple videos simultanously
+# TODO: Style GUI with proper positioning
+# TODO: Port dependencies to local without pip import
+
 def main():
-    logger.printInfo("Starting Youtube downloader tool...")
+    logger.INFO("##### Starting Multituber #####")
 
-    _configfile = 'C:/Users/Prajesh/Swiss-Army-Scripts/Python/Tools/config/links.properties'
+    user_interface = Gui()
+    config = ConfigFile("D:/side_projects/multituber/config/multituber.conf")
+    config.loadconfig()
 
-    _path = 'downloads/'
+    _download_path = config.getvalue('DOWNLOAD_PATH')
+    _format = config.getvalue('FORMAT')
+    _quality = config.getvalue('QUALITY')
 
-    _format = 'mp4'
+    _links = user_interface.getlinks()
+    print("Prajesh: {}".format(_links))
 
-    _quality = '360p'
+    createdirectory(_download_path)
 
-    openconfigfile(_configfile)
+    downloadvideos(_links, _download_path, _quality, _format)
 
-    _links = getlinksfromconfig(_configfile)
+    logger.INFO("Done. Videos downloaded: {}".format(len(_links)))
+    logger.INFO("##### Shuting down Multituber #####")
 
-    createdirectory(_path)
-
-    downloadvideos(_links, _path, _quality, _format)
-
-    logger.printInfo("Done. Videos downloaded: {}".format(len(_links)))
-
-
-def openconfigfile(configfile):
-    os.startfile(configfile)
-
-
-def getlinksfromconfig(configfile):
-    list = []
-    with open(configfile) as f:
-        for line in f:
-            if line.startswith('#'):
-                continue
-            list.append(line.strip())
-    return list
 
 
 def createdirectory(directory):
     if not os.path.exists(directory):
         os.makedirs(directory)
-        logger.printDebug('{} created!'.format(directory))
+        logger.DEBUG('{} created!'.format(directory))
 
 
 def downloadvideos(videos, directory, quality, format):
     video = None
     for vid in videos:
         yt = YouTube(vid)
-        logger.printDebug('Downloading => [ {} | {} ]'.format(yt.filename, quality))
+        logger.DEBUG('Downloading => [ {} | {} ]'.format(yt.filename, quality))
         video = yt.get(format, quality)
         video.download(directory, on_progress=print_status)
-        winsound.Beep(440, 300)  # frequency, duration
         print()
+
+    winsound.Beep(440, 100)  # frequency, duration
 
 
 if __name__ == '__main__':
