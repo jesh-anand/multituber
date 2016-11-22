@@ -6,6 +6,10 @@ from tkinter import *
 
 
 def main():
+    testUI()
+
+
+def testUI():
     root = Tk()
     root.title('Youtube Downloader - Prototype')
 
