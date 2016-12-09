@@ -17,7 +17,7 @@ def testUI():
     text_widget1 = Text(root, height=20, width=50)
 
     # Declare the button widget
-    button_1 = Button(root, text='Download', command=lambda: gettext(text_widget1), height=5, width=10)
+    button_1 = Button(root, text='Download', command=lambda: gettext(text_widget1), height=1, width=10)
 
     # Coordinates for widgets
     text_widget1.grid(row=0)
