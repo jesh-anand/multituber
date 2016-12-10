@@ -9,14 +9,15 @@ from progress_bar import print_status
 """youtube-downloader.py: A Youtube video downloader that downloads multiple videos from various sources simulatenously"""
 
 __author__ = "Prajesh Ananthan"
-__copyright__ = "Copyright 2016, Python"
-__license__ = "GPL"
+__copyright__ = 'Copyright 2016 Prajesh Ananthan'
+__license__ = 'MIT License'
 
 
 # TODO: To have flexible approach to download videos at all resolution
 # TODO: To download multiple videos simultanously
 # TODO: Style GUI with proper positioning
 # TODO: Port dependencies to local without pip import
+# TODO: Unit testing for fail scenarios
 
 def main():
     logger.INFO("##### Starting Multituber #####")

@@ -3,7 +3,7 @@ from tkinter import *
 """This script is the GUI prototype for multituber
 
 """
-
+# TODO: Change the UI element cordination
 
 def main():
     testUI()
