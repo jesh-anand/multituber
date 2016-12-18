@@ -1,9 +1,9 @@
 from tkinter import *
 
-"""This script is the GUI prototype for multituber
+"""This script is the GUI prototype for multituber"""
 
-"""
-# TODO: Change the UI element cordination
+
+# TODO: Fix textbox cordinates for icon placement
 
 def main():
     testUI()
@@ -16,8 +16,11 @@ def testUI():
     # Declare the text widget
     text_widget1 = Text(root, height=20, width=50)
 
+    icon = PhotoImage(file="resources/images/download-icon.png")
+
     # Declare the button widget
-    button_1 = Button(root, text='Download', command=lambda: gettext(text_widget1), height=1, width=10)
+    button_1 = Button(root, text='Download', command=lambda: gettext(text_widget1), width=100, image=icon,
+                      compound="left")
 
     # Coordinates for widgets
     text_widget1.grid(row=0)
