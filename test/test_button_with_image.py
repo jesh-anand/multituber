@@ -1,4 +1,7 @@
+"""test_button_with_image: Unit testing button with icon placement"""
+
 import tkinter as tk
+
 
 class View(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -6,6 +9,7 @@ class View(tk.Frame):
         self.image = tk.PhotoImage(file="resources/images/download-icon.png")
         b = tk.Button(self, text="Download", image=self.image, compound="left")
         b.pack(side="top")
+
 
 if __name__ == "__main__":
     root = tk.Tk()
