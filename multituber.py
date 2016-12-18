@@ -1,10 +1,11 @@
-from pytube import YouTube
-from ui import Gui
-import logger
 import os
-import winsound
-from readconfig import *
+
+from pytube import YouTube
+
+import logger
 from progress_bar import print_status
+from readconfig import *
+from ui import Gui
 
 """youtube-downloader.py: A Youtube video downloader that downloads multiple videos from various sources simulatenously"""
 
@@ -13,16 +14,16 @@ __copyright__ = 'Copyright 2016 Prajesh Ananthan'
 __license__ = 'MIT License'
 
 
-# TODO: To have flexible approach to download videos at all resolution
-# TODO: To download multiple videos simultanously
-# TODO: Style GUI with proper positioning
-# TODO: Port dependencies to local without pip import
+# TODO: Ability to download videos at all resolution
+# TODO: Download at least 3 videos simultaneously
 # TODO: Unit testing for fail scenarios
 
 def main():
     logger.INFO("##### Starting Multituber #####")
 
     user_interface = Gui()
+
+    # TODO: Port config to GUI
     config = ConfigFile("D:/side_projects/multituber/config/multituber.conf")
     config.loadconfig()
 
@@ -54,8 +55,6 @@ def downloadvideos(videos, directory, quality, format):
         video = yt.get(format, quality)
         video.download(directory, on_progress=print_status)
         print()
-
-    winsound.Beep(440, 100)  # frequency, duration
 
 
 if __name__ == '__main__':
